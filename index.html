@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUSY Bar - Landing Page</title>
+  <link rel="stylesheet" href="src/css/output.css">
+</head>
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500">
+  <!-- Vidéo -->
+  <video 
+    src="/src/assets/images/welcome.mp4"
+    autoplay
+    loop
+    muted
+    playsinline
+    class="absolute -z-10 object-cover w-full h-screen opacity-70 dark:opacity-50">
+  </video>
+
+  <main class="container mx-auto min-h-screen flex flex-col px-4 sm:px-8">
+    <!-- Header -->
+    <header class="flex items-center justify-between pt-5">
+      <!-- Menu -->
+      <nav>
+        <ul class="flex flex-wrap gap-5 text-gray-600 dark:text-gray-300">
+          <li class="font-bold">BUSY Bar</li>
+          <li><a href="#" class="underline hover:text-orange-500 dark:hover:text-orange-400">Boutique</a></li>
+          <li><a href="#" class="underline hover:text-orange-500 dark:hover:text-orange-400">Téléchargements</a></li>
+          <li><a href="#" class="underline hover:text-orange-500 dark:hover:text-orange-400">Blog</a></li>
+        </ul>
+      </nav>
+
+      <!-- Bouton Dark mode -->
+      <button id="toggleDark" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+        🌞 / 🌙
+      </button>
+    </header>
+
+    <!-- Corps -->
+    <section class="flex mt-[40vh] mx-auto flex-col max-w-[550px] text-xl grow text-center">
+      <p>
+        <span class="font-bold text-black dark:text-white">BUSY Bar</span> est un dispositif multi-outil de productivité avec un écran LED pixelisé.
+        Minuteur de concentration avec fonction de blocage des distractions sur votre téléphone et PC. Entièrement personnalisable, open-source et prêt pour la maison connectée.
+      </p>
+      <button class="bg-orange-500 text-white py-4 px-14 rounded-lg hover:bg-black dark:hover:bg-gray-800 duration-300 cursor-pointer mx-auto block mt-10">
+        Acheter
+      </button>
+    </section>
+
+    <!-- Fonctionnalités -->
+    <section class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-5 pb-5 opacity-90 mt-10 md:mt-0">
+      <!-- Feature 1 -->
+      <div class="flex items-start gap-3 bg-gray-100 dark:bg-gray-800 p-4 rounded-xl">
+        <img src="/src/assets/images/feature-one.svg" alt="Fonctionnalité 1" class="w-14">
+        <div>
+          <h3 class="text-xl mb-1.5 font-semibold">Outil de productivité</h3>
+          <p class="text-sm opacity-80">Blocage des distractions, message BUSY personnalisé, minuteur de concentration, synchronisation multiplateforme.</p>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="flex items-start gap-3 bg-gray-100 dark:bg-gray-800 p-4 rounded-xl">
+        <img src="/src/assets/images/feature-two.svg" alt="Fonctionnalité 2" class="w-14">
+        <div>
+          <h3 class="text-xl mb-1.5 font-semibold">Application et intégration</h3>
+          <p class="text-sm opacity-80">Connexion à des logiciels tiers, intégrations avec les événements de calendrier et les appels.</p>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="flex items-start gap-3 bg-gray-100 dark:bg-gray-800 p-4 rounded-xl">
+        <img src="/src/assets/images/feature-three.svg" alt="Fonctionnalité 3" class="w-14">
+        <div>
+          <h3 class="text-xl mb-1.5 font-semibold">Support maison connectée</h3>
+          <p class="text-sm opacity-80">Connectez-vous à Google Home et Apple Home via le protocole Matter.</p>
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="flex items-start gap-3 bg-gray-100 dark:bg-gray-800 p-4 rounded-xl">
+        <img src="/src/assets/images/feature-four.svg" alt="Fonctionnalité 4" class="w-14">
+        <div>
+          <h3 class="text-xl mb-1.5 font-semibold">Pour les développeurs</h3>
+          <p class="text-sm opacity-80">API HTTP ouverte, SDK open-source, bibliothèques Python / Go / JS, MQTT, sans verrouillage fournisseur.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Script dark mode -->
+  <script>
+    const toggle = document.getElementById('toggleDark');
+    toggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
+
+    // Rétablit le thème choisi précédemment
+    if (localStorage.theme === 'dark' ||
+       (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+</body>
+</html>
